@@ -100,4 +100,4 @@ spec:
       - path: /        
         backend:
           serviceName: w-svc
-servicePort: 80
+          servicePort: 80
