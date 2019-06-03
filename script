@@ -1,0 +1,5 @@
+echo "SADHANA"
+
+cd /root/atlassian-bamboo-6.9.0/bin/C:/bamboo/bamboo-home/xml-data/build-dir/FLUXWP-FLUXWPPLAN-JOB1
+
+kubectl create -f w-deploy.yaml
