@@ -5,6 +5,6 @@ echo "SADHANA"
 kubectl delete -f w-deploy.yaml
 sleep 10
 kubectl create -f w-deploy.yaml
-echo bamboo.buildNumber
+echo $bamboo.buildNumber
 export TAG=$bamboo.buildNumber
 echo $TAG
