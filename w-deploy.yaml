@@ -1,9 +1,10 @@
+---
 apiVersion: v1
 kind: Secret
 metadata:
   name: w-secret
-type: Opaque 
-data: 
+type: Opaque
+data:
   username: Z2l0b3Bz
   password: Z2l0b3BzMTIz
 ---
@@ -23,7 +24,7 @@ metadata:
     app: w-label
 spec:
   ports:
-    - port: 80
+  - port: 80
   selector:
     app: w-label
     tier: frontend
@@ -37,7 +38,7 @@ metadata:
     app: w-label
 spec:
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi
@@ -48,6 +49,10 @@ metadata:
   name: w-deploy
   labels:
     app: w-label
+  annotations:
+    flux.weave.works/locked_user: sadhana n <sadhanna.na@gmail.com>
+    flux.weave.works/locked: 'true'
+    flux.weave.works/locked_msg: '"locking to put on hold"'
 spec:
   selector:
     matchLabels:
@@ -97,7 +102,7 @@ spec:
   - host: sadhana.gitops.kops.bsh-ac.cloud
     http:
       paths:
-      - path: /        
+      - path: /
         backend:
           serviceName: w-svc
           servicePort: 80
