@@ -5,7 +5,7 @@ echo "SADHANA"
 #sleep 10
 #kubectl create -f w-deploy.yaml
 
-echo ${bamboo.buildNumber}
-print ${bamboo.buildNumber}
-export TAG={bamboo.buildNumber}
+#echo ${bamboo.buildNumber}
+#print ${bamboo.buildNumber}
+export TAG=${bamboo.buildNumber}
 echo $TAG
