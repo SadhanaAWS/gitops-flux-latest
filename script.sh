@@ -7,5 +7,5 @@ echo "SADHANA"
 
 #echo ${bamboo.buildNumber}
 #print ${bamboo.buildNumber}
-export TAG=${bamboo.buildNumber}
-echo $TAG
+TAG=${bamboo.buildNumber}
+echo ${TAG}
