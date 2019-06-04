@@ -49,10 +49,6 @@ metadata:
   name: w-deploy
   labels:
     app: w-label
-  annotations:
-    flux.weave.works/locked_user: sadhana n <sadhanna.na@gmail.com>
-    flux.weave.works/locked: 'true'
-    flux.weave.works/locked_msg: '"locking to put on hold"'
 spec:
   selector:
     matchLabels:
