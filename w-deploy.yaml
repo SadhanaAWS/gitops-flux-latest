@@ -49,8 +49,6 @@ metadata:
   name: w-deploy
   labels:
     app: w-label
-  annotations:
-    flux.weave.works/automated: 'true'
 spec:
   selector:
     matchLabels:
