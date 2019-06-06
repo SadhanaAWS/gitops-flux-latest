@@ -5,8 +5,8 @@ metadata:
   name: w-secret
 type: Opaque
 data:
-  username: Z2l0b3Bz
-  password: Z2l0b3BzMTIz
+  username: cm9vdA==
+  password: IVFBWjJ3c3g=
 ---
 kind: Service
 apiVersion: v1
@@ -14,7 +14,7 @@ metadata:
   name: w-ext-svc
 spec:
   type: ExternalName
-  externalName: gitops.cfgr3xj38ihj.eu-central-1.rds.amazonaws.com
+  externalName: flux-db.cfgr3xj38ihj.eu-central-1.rds.amazonaws.com
 ---
 apiVersion: v1
 kind: Service
