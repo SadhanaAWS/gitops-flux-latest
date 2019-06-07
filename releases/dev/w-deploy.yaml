@@ -1,8 +1,8 @@
----
 apiVersion: v1
 kind: Secret
 metadata:
-  name: w-secret
+  name: wbkp-secret
+  namespace: dev
 type: Opaque
 data:
   username: cm9vdA==
@@ -11,7 +11,8 @@ data:
 kind: Service
 apiVersion: v1
 metadata:
-  name: w-ext-svc
+  name: wbkp-ext-svc
+  namespace: dev
 spec:
   type: ExternalName
   externalName: flux-db.cfgr3xj38ihj.eu-central-1.rds.amazonaws.com
@@ -19,23 +20,25 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: w-svc
+  name: wbkp-svc
+  namespace: dev
   labels:
-    app: w-label
+    app: wbkp-label
 spec:
   ports:
   - port: 80
   selector:
-    app: w-label
+    app: wbkp-label
     tier: frontend
   type: LoadBalancer
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: w-pvc
+  name: wbkp-pvc
+  namespace: dev
   labels:
-    app: w-label
+    app: wbkp-label
 spec:
   accessModes:
   - ReadWriteOnce
@@ -46,20 +49,21 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: w-deploy
+  name: wbkp-deploy
+  namespace: dev
   labels:
-    app: w-label
+    app: wbkp-label
 spec:
   selector:
     matchLabels:
-      app: w-label
+      app: wbkp-label
       tier: frontend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: w-label
+        app: wbkp-label
         tier: frontend
     spec:
       containers:
@@ -67,16 +71,16 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: w-ext-svc
+          value: wbkp-ext-svc
         - name: WORDPRESS_DB_USER
           valueFrom:
             secretKeyRef:
-              name: w-secret
+              name: wbkp-secret
               key: username
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: w-secret
+              name: wbkp-secret
               key: password
         ports:
         - containerPort: 80
@@ -87,4 +91,5 @@ spec:
       volumes:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
-          claimName: w-pvc
+          claimName: wbkp-pvc
+
